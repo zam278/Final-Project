@@ -11,3 +11,8 @@ var map = new mapboxgl.Map({
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
+
+//  show modal when page loads
+$(document).ready(function(){
+    $("#myModal").modal('show');
+});
