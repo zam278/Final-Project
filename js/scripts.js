@@ -12,7 +12,14 @@ var map = new mapboxgl.Map({
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
-// START Modal
-$(window).on('load',function(){
-    $('#StartModalLong').modal('show');
-});
+//Get modal element
+var modal = document.getElementById('simpleModal');
+//get close button
+var closeBtn = document.getElementById('closeBtn');
+
+//Listen for close click
+closeBtn.addEventListener('click', closeModal);
+// Function to close the modal
+function closeModal (){
+  modal.style.display = 'none';
+}
