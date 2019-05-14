@@ -18,16 +18,43 @@ html, body {
 .modal-content{
   background-color: lightgray
   margin: 20% auto;
-  padding: 20px;
-  width:70%;
+  /* padding: 20px; */
+  width:600px;
   box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+modal-header h2{
+  margin: 0;
+}
+.modal-header{
+  background:Pink;
+  padding: 15px;
+  color: #fff;
 }
 
+.modal-body{
+  padding: 10px 20px;
+}
+
+.modal-fotter{
+  background: Pink;
+  padding: 10px;
+  color: white;
+  text-align: center;
+
+}
 .closeBtn{
   color: #c3c3c3;
   float: right;
   font-size: 30px;
+  color: white;
 
+}
+
+@keyframes modalopen{
+  from{opacity: 0}
+  to {opacity: 1}
 }
 
 .closeBtn:hover, .closeBtn: focus{
