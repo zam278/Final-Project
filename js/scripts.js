@@ -47,7 +47,6 @@ map.on('style.load', function() {
         'circle-radius': 8,
         'circle-color': 'blue',
         'circle-opacity': 0.6,
-        // 'circle-color': 'green',
       }
     })
 
@@ -61,15 +60,14 @@ map.on('style.load', function() {
       type: 'line',
       source: 'subway_lines',
       paint: {
-        'line-color': 'orange',
-        'opacity-line': 0.4
+        'line-color': '#41ae76',
 
       },
 // to filter the layer and include only L line
       filter: ["==","name","L"]
 
-
     }, 'waterway-label')
+
 
     map.addLayer({
        id: 'subway_lines-line',
@@ -82,8 +80,9 @@ map.on('style.load', function() {
 // to include all subway lines
        filter: ["!=","name","L"]
 
-
      }, 'waterway-label')
+
+
      //
      // map.addSource('0.5_buffer',{
      //   type: 'geojson',
@@ -136,7 +135,6 @@ map.on('style.load', function() {
         type: 'fill',
         source: 'small-buffer',
         paint: {
-          // 'circle-radius': 5,
           'fill-color': '#fff',
           'fill-opacity': 0.1,
 
