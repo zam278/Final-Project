@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin:0
+  margin:0;
   /* background-color: balck;
   color: white */
 }
@@ -13,15 +13,19 @@ html, body {
   margin: 0 auto;
 }
 
-#sidebar{
-  background:balck;
-  width: 200px;
-  height: 100%;
-  /* display: block; */
+#sidebar {
+  width: 300px;
   position: absolute;
-  left: 0px;
-  top: 0px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: gray;
+  color: white;
+  padding: 15px;
+
 }
+
 
 
 
