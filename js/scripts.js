@@ -16,3 +16,71 @@ map.addControl(new mapboxgl.NavigationControl());
 $(document).ready(function(){
     $("#myModal").modal('show');
 });
+
+// we can't add our own sources and layers until the base style is finished loading
+map.on('style.load', function() {
+  map.addSource('bars',{
+    type: 'geojson',
+    data: 'data/bars.geojson',
+  });
+
+  map.addLayer({
+     id: 'bars-circle',
+     type: 'circle',
+     source: 'bars',
+     paint: {
+       'circle-radius': 5,
+       'circle-color': '#FFF'
+     }
+   })
+
+   map.addSource('subway_lines',{
+     type: 'geojson',
+     data: 'data/subway_lines.geojson',
+   });
+
+   map.addLayer({
+      id: 'subway_lines-L',
+      type: 'line',
+      source: 'subway_lines',
+      paint: {
+        'line-color': 'blue',
+
+      },
+
+      filter: ["==","name","L"]
+
+
+    }, 'waterway-label')
+
+    map.addLayer({
+       id: 'subway_lines-line',
+       type: 'line',
+       source: 'subway_lines',
+       paint: {
+         'line-color': 'white',
+
+       },
+
+       filter: ["!=","name","L"]
+
+
+     }, 'waterway-label')
+
+     map.addSource('l_train_stops_buffer',{
+       type: 'geojson',
+       data: 'data/l_train_stops_buffer.geojson',
+     });
+
+     map.addLayer({
+        id: 'l_train_stops_buffer-circle',
+        type: 'circle',
+        source: 'l_train_stops_buffer',
+        paint: {
+          'circle-radius': 5,
+          'circle-color': 'orange'
+
+        }
+      })
+
+})
