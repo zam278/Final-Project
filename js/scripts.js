@@ -30,9 +30,24 @@ map.on('style.load', function() {
      source: 'bars',
      paint: {
        'circle-radius': 5,
-       'circle-color': '#FFF'
+       'circle-color': '#fcc5c0',
      }
    })
+
+   map.addSource('rest_along_L',{
+     type: 'geojson',
+     data: 'data/rest_along_L.geojson',
+   });
+
+   map.addLayer({
+      id: 'restaurant-circle',
+      type: 'circle',
+      source: 'rest_along_L',
+      paint: {
+        'circle-radius': 6,
+        'circle-color': '#c994c7',
+      }
+    })
 
    map.addSource('subway_lines',{
      type: 'geojson',
@@ -44,10 +59,10 @@ map.on('style.load', function() {
       type: 'line',
       source: 'subway_lines',
       paint: {
-        'line-color': 'blue',
+        'line-color': '#41ab5d',
 
       },
-
+// to filter the layer and include only L line
       filter: ["==","name","L"]
 
 
@@ -61,26 +76,49 @@ map.on('style.load', function() {
          'line-color': 'white',
 
        },
-
+// to include all subway lines
        filter: ["!=","name","L"]
 
 
      }, 'waterway-label')
 
-     map.addSource('l_train_stops_buffer',{
+     map.addSource('0.5_buffer',{
        type: 'geojson',
-       data: 'data/l_train_stops_buffer.geojson',
+       data: 'data/0.5_buffer.geojson',
      });
 
      map.addLayer({
-        id: 'l_train_stops_buffer-circle',
-        type: 'circle',
-        source: 'l_train_stops_buffer',
+        id: 'buffer-fill',
+        type: 'fill',
+        source: '0.5_buffer',
         paint: {
-          'circle-radius': 5,
-          'circle-color': 'orange'
-
+          // 'circle-radius': 5,
+          'fill-color': '#ccece6',
+          'fill-opacity': 0.3,
+     // map.addLayer({
+     //    id: 'buffer-line',
+     //    type: 'line',
+     //    source: 'train_stops_buffer',
+     //    paint: {
+     //      // 'circle-radius': 5,
+     //      'line-color': 'red',
         }
       })
+
+      map.addSource('l_train_stops',{
+        type: 'geojson',
+        data: 'data/l_train_stops.geojson',
+      });
+
+      map.addLayer({
+         id: 'L-stops-circle',
+         type: 'circle',
+         source: 'l_train_stops',
+         paint: {
+           'circle-radius': 8,
+           'circle-color': 'dark blue',
+         }
+       })
+
 
 })
