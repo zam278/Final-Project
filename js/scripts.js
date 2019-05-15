@@ -30,7 +30,7 @@ map.on('style.load', function() {
      source: 'bars',
      paint: {
        'circle-radius': 5,
-       'circle-color': '#fcc5c0',
+       'circle-color': 'red',
      }
    })
 
@@ -44,8 +44,10 @@ map.on('style.load', function() {
       type: 'circle',
       source: 'rest_along_L',
       paint: {
-        'circle-radius': 6,
-        'circle-color': '#c994c7',
+        'circle-radius': 8,
+        'circle-color': 'blue',
+        'circle-opacity': 0.6,
+        // 'circle-color': 'green',
       }
     })
 
@@ -59,7 +61,8 @@ map.on('style.load', function() {
       type: 'line',
       source: 'subway_lines',
       paint: {
-        'line-color': '#41ab5d',
+        'line-color': 'orange',
+        'opacity-line': 0.4
 
       },
 // to filter the layer and include only L line
@@ -81,20 +84,40 @@ map.on('style.load', function() {
 
 
      }, 'waterway-label')
+     //
+     // map.addSource('0.5_buffer',{
+     //   type: 'geojson',
+     //   data: 'data/0.5_buffer.geojson',
+     // });
+     //
+     // map.addLayer({
+     //    id: 'buffer-fill',
+     //    type: 'fill',
+     //    source: '0.5_buffer',
+     //    paint: {
+     //      // 'circle-radius': 5,
+     //      'fill-color': '#ccece6',
+     //      'fill-opacity': 0.3,
+     //    }
+     //  })
 
-     map.addSource('0.5_buffer',{
-       type: 'geojson',
-       data: 'data/0.5_buffer.geojson',
-     });
 
-     map.addLayer({
-        id: 'buffer-fill',
-        type: 'fill',
-        source: '0.5_buffer',
-        paint: {
-          // 'circle-radius': 5,
-          'fill-color': '#ccece6',
-          'fill-opacity': 0.3,
+          // map.addSource('0.5_buffer-2',{
+          //   type: 'geojson',
+          //   data: 'data/0.5_buffer-2.geojson',
+          // });
+          //
+          // map.addLayer({
+          //    id: 'buffer2-fill',
+          //    type: 'fill',
+          //    source: '0.5_buffer-2',
+          //    paint: {
+          //      // 'circle-radius': 5,
+          //      'fill-color': '#66c2a4',
+          //      'fill-opacity': 0.3,
+          //
+          //    }
+          //  })
      // map.addLayer({
      //    id: 'buffer-line',
      //    type: 'line',
@@ -102,6 +125,21 @@ map.on('style.load', function() {
      //    paint: {
      //      // 'circle-radius': 5,
      //      'line-color': 'red',
+
+     map.addSource('small-buffer',{
+       type: 'geojson',
+       data: 'data/small-buffer.geojson',
+     });
+
+     map.addLayer({
+        id: 'small-buffer-fill',
+        type: 'fill',
+        source: 'small-buffer',
+        paint: {
+          // 'circle-radius': 5,
+          'fill-color': '#fff',
+          'fill-opacity': 0.1,
+
         }
       })
 
@@ -116,7 +154,7 @@ map.on('style.load', function() {
          source: 'l_train_stops',
          paint: {
            'circle-radius': 8,
-           'circle-color': 'dark blue',
+           'circle-color': 'yellow',
          }
        })
 
