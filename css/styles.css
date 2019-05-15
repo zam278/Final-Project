@@ -2,6 +2,8 @@ html, body {
   height: 100%;
   width: 100%;
   margin:0
+  /* background-color: balck;
+  color: white */
 }
 
 #mapContainer {
@@ -11,7 +13,7 @@ html, body {
   margin: 0 auto;
 }
 
-#sidebar {
+/* #sidebar {
   width: 300px;
   position: absolute;
   top: 0;
@@ -19,4 +21,4 @@ html, body {
   bottom: 0;
   z-index: 10;
   padding: 15px;
-}
+} */
