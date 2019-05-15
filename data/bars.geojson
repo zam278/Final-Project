@@ -478,4 +478,5 @@
 { "type": "Feature", "properties": { "location type": "Club\/Bar\/Restaurant", "incident zip": 11249, "city": "BROOKLYN", "borough": "BROOKLYN", "lat": 40.71811491, "Long": -73.95743951, "num_calls": 10 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ -73.95743951, 40.71811491 ] ] } },
 { "type": "Feature", "properties": { "location type": "Club\/Bar\/Restaurant", "incident zip": 11211, "city": "BROOKLYN", "borough": "BROOKLYN", "lat": 40.71176537, "Long": -73.94268697, "num_calls": 16 }, "geometry": { "type": "MultiPoint", "coordinates": [ [ -73.94268697, 40.71176537 ] ] } }
 ]
+
 }
