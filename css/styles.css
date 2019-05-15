@@ -13,6 +13,19 @@ html, body {
   margin: 0 auto;
 }
 
+#sidebar{
+  background:balck;
+  width: 200px;
+  height: 100%
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  
+}
+
+
+
 /* #sidebar {
   width: 300px;
   position: absolute;
