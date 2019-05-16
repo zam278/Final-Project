@@ -192,7 +192,7 @@ map.on('style.load', function() {
     },
       paint: {
         'line-color': '#41ae76',
-      }
+        },
 // to filter the layer and include only L line
       filter: ["==","name","L"]
     });
@@ -206,7 +206,7 @@ map.on('style.load', function() {
      },
        paint: {
          'line-color': 'white',
-     }
+        },
 // to include all subway lines
        filter: ["!=","name","L"]
      });
@@ -242,7 +242,7 @@ map.on('style.load', function() {
          paint: {
            'circle-radius': 8,
            'circle-color': 'yellow',
-    }
+         },
   })
 
 
@@ -264,9 +264,8 @@ map.on('style.load', function() {
             'line-width': 3,
             'line-opacity': 0.9,
             'line-color': 'black',
-           }
-          }
-      });
+             },
+        });
 
 var toggleableLayerIds = [ 'bars-circle', 'restaurant-circle', 'subway_lines-line', 'L-stops-circle'];
 

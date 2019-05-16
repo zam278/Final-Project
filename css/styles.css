@@ -104,10 +104,10 @@ color: #404040;
 }
 
 #menu a.active {
-background-color: #3887be;
+background-color: #c3c3c3;
 color: #ffffff;
 }
 
 #menu a.active:hover {
-background: #3074a4;
+background: #525252;
 }
