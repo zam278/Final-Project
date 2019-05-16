@@ -148,11 +148,15 @@ map.on('style.load', function() {
      id: 'bars-circle',
      type: 'circle',
      source: 'bars',
+     'layout': {
+        'visibility': 'visible',
+   },
      paint: {
        'circle-radius': 5,
        'circle-color': 'red',
-     }
-   })
+   }
+ });
+
 
    map.addSource('rest_along_L',{
      type: 'geojson',
@@ -163,12 +167,16 @@ map.on('style.load', function() {
       id: 'restaurant-circle',
       type: 'circle',
       source: 'rest_along_L',
+      'layout': {
+         'visibility': 'visible',
+    },
       paint: {
         'circle-radius': 8,
         'circle-color': 'blue',
         'circle-opacity': 0.6,
-      }
-    })
+    }
+  });
+
 
    map.addSource('subway_lines',{
      type: 'geojson',
@@ -179,28 +187,29 @@ map.on('style.load', function() {
       id: 'subway_lines-L',
       type: 'line',
       source: 'subway_lines',
+      'layout': {
+         'visibility': 'visible',
+    },
       paint: {
         'line-color': '#41ae76',
-
-      },
+      }
 // to filter the layer and include only L line
       filter: ["==","name","L"]
-
-    }, 'waterway-label')
-
+    });
 
     map.addLayer({
        id: 'subway_lines-line',
        type: 'line',
        source: 'subway_lines',
+       'layout': {
+          'visibility': 'visible',
+     },
        paint: {
          'line-color': 'white',
-
-       },
+     }
 // to include all subway lines
        filter: ["!=","name","L"]
-
-     }, 'waterway-label')
+     });
 
 
      map.addSource('small-buffer',{
@@ -215,9 +224,8 @@ map.on('style.load', function() {
         paint: {
           'fill-color': '#fff',
           'fill-opacity': 0.1,
-
-        }
-      })
+      }
+    });
 
       map.addSource('l_train_stops',{
         type: 'geojson',
@@ -228,11 +236,14 @@ map.on('style.load', function() {
          id: 'L-stops-circle',
          type: 'circle',
          source: 'l_train_stops',
+         'layout': {
+            'visibility': 'visible',
+       },
          paint: {
            'circle-radius': 8,
            'circle-color': 'yellow',
-      }
-  });
+    }
+  })
 
 
        // add an empty data source, which we will use to highlight the station the user is hovering over
@@ -253,8 +264,40 @@ map.on('style.load', function() {
             'line-width': 3,
             'line-opacity': 0.9,
             'line-color': 'black',
+           }
           }
-        });
+      });
+
+var toggleableLayerIds = [ 'bars-circle', 'restaurant-circle', 'subway_lines-line', 'L-stops-circle'];
+
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+   var id = toggleableLayerIds[i];
+
+    var link = document.createElement('a');
+    link.href = '#';
+    link.className = 'active';
+    link.textContent = id;
+
+    link.onclick = function (e) {
+        var clickedLayer = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+    };
+
+        var layers = document.getElementById('menu');
+        layers.appendChild(link);
+        }
+
 
  // when the mouse moves, do stuff!
   map.on('mousemove', function (e) {
