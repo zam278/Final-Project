@@ -17,27 +17,153 @@ $(document).ready(function(){
     $("#myModal").modal('show');
 });
 
-// a helper function for looking up colors and descriptions for NYC land use codes
+
 var StationLookup = (code) => {
   switch (code) {
     case 1:
       return {
-        color: '#b22055',
-        // name: '1 & 2 Family',
+        color: '#f4f455',
+        description: 'Lorimer St',
       };
+    case 2:
+      return {
+        color: '#f7d496',
+        description: 'Sutter Ave',
+      };
+    case 3:
+      return {
+        color: '#FF9900',
+        description: '1st Ave',
+      };
+    case 4:
+      return {
+        color: '#f7cabf',
+        description: 'Grand St',
+      };
+    case 5:
+      return {
+        color: '#ea6661',
+        description: 'Graham Ave',
+      };
+    case 6:
+      return {
+        color: '#d36ff4',
+        description: 'Bedford Ave',
+      };
+    case 7:
+      return {
+        color: '#dac0e8',
+        description: 'Montrose Ave',
+      };
+    case 8:
+      return {
+        color: '#5CA2D1',
+        description: 'Atlantic Ave',
+      };
+    case 9:
+      return {
+        color: '#8ece7c',
+        description: 'Halsey St',
+      };
+    case 10:
+      return {
+        color: '#bab8b6',
+        description: 'Myrtle - Wyckoff Aves',
+      };
+    case 11:
+      return {
+        color: '#5f5f60',
+        description: 'Livonia Ave',
+      };
+    case 12:
+      return {
+        color: '#5f5f60',
+        description: 'Canarsie - Rockaway Pkwy',
+      };
+    case 13:
+      return {
+        color: '#f4f455',
+        description: 'E 105th St',
+      };
+    case 14:
+      return {
+        color: '#f7d496',
+        description: 'New Lots Ave',
+      };
+    case 15:
+      return {
+        color: '#FF9900',
+        description: 'DeKalb Ave',
+      };
+    case 16:
+      return {
+        color: '#f7cabf',
+        description: 'Bushwick - Aberdeen',
+      };
+    case 17:
+      return {
+        color: '#ea6661',
+        description: 'Broadway Junction',
+      };
+    case 18:
+      return {
+        color: '#d36ff4',
+        description: 'Jefferson St',
+      };
+    case 19:
+      return {
+        color: '#dac0e8',
+        description: 'Transportation & Utility',
+      };
+    case 18:
+      return {
+        color: '#5CA2D1',
+        description: 'Morgan Ave',
+      };
+    case 19:
+      return {
+        color: '#8ece7c',
+        description: '3rd Ave',
+      };
+    case 20:
+      return {
+        color: '#bab8b6',
+        description: 'Union Sq - 14th St',
+      };
+    case 21:
+      return {
+        color: '#5f5f60',
+        description: '6th Ave',
+      };
+    case 22:
+      return {
+        color: '#5f5f60',
+        description: '8th Ave',
+      };
+
+    default:
+      return {
+        color: '#5f5f60',
+        description: 'Other',
+      };
+  }
+};
+
 // use jquery to programmatically create a Legend
 // for numbers 1 - 11, get the land use color and description
-for (var i=1; i<2; i++) {
+for (var i=1; i<23; i++) {
   // lookup the landuse info for the current iteration
   const stationInfo = StationLookup(i);
 
   // this is a simple jQuery template, it will append a div to the legend with the color and description
   $('.legend').append(`
     <div>
+      <div class="legend-color-box" style="background-color:${stationInfo.color};"></div>
       ${stationInfo.description}
     </div>
   `)
 }
+
 
 // we can't add our own sources and layers until the base style is finished loading
 map.on('style.load', function() {
@@ -105,48 +231,6 @@ map.on('style.load', function() {
      }, 'waterway-label')
 
 
-     //
-     // map.addSource('0.5_buffer',{
-     //   type: 'geojson',
-     //   data: 'data/0.5_buffer.geojson',
-     // });
-     //
-     // map.addLayer({
-     //    id: 'buffer-fill',
-     //    type: 'fill',
-     //    source: '0.5_buffer',
-     //    paint: {
-     //      // 'circle-radius': 5,
-     //      'fill-color': '#ccece6',
-     //      'fill-opacity': 0.3,
-     //    }
-     //  })
-
-
-          // map.addSource('0.5_buffer-2',{
-          //   type: 'geojson',
-          //   data: 'data/0.5_buffer-2.geojson',
-          // });
-          //
-          // map.addLayer({
-          //    id: 'buffer2-fill',
-          //    type: 'fill',
-          //    source: '0.5_buffer-2',
-          //    paint: {
-          //      // 'circle-radius': 5,
-          //      'fill-color': '#66c2a4',
-          //      'fill-opacity': 0.3,
-          //
-          //    }
-          //  })
-     // map.addLayer({
-     //    id: 'buffer-line',
-     //    type: 'line',
-     //    source: 'train_stops_buffer',
-     //    paint: {
-     //      // 'circle-radius': 5,
-     //      'line-color': 'red',
-
      map.addSource('small-buffer',{
        type: 'geojson',
        data: 'data/small-buffer.geojson',
@@ -175,8 +259,8 @@ map.on('style.load', function() {
          paint: {
            'circle-radius': 8,
            'circle-color': 'yellow',
-         }
-       })
+      }
+  });
 
 
        // add an empty data source, which we will use to highlight the station the user is hovering over
@@ -200,9 +284,8 @@ map.on('style.load', function() {
           }
         });
 
-
-       // when the mouse moves, do stuff!
-       map.on('mousemove', function (e) {
+ // when the mouse moves, do stuff!
+  map.on('mousemove', function (e) {
          // query for the features under the mouse, but only in the station layer
          var features = map.queryRenderedFeatures(e.point, {
              layers: ['l_train_stops'],
@@ -219,8 +302,8 @@ map.on('style.load', function() {
            // lookup the corresponding description for the land use code
            var stationDescription = StationLookup(parseInt(station.properties.name)).description;
 
-           // use jquery to display the address and land use description to the sidebar
-           $('#name').text(l_station.properties.name);
+           // use jquery to display the station description to the sidebar
+           $('#name').text(station.properties.name);
 
 
            // set this lot's polygon feature as the data for the highlight source
@@ -235,4 +318,5 @@ map.on('style.load', function() {
            });
          }
        })
+
       })
