@@ -22,128 +22,103 @@ var StationLookup = (code) => {
   switch (code) {
     case 1:
       return {
-        color: '#f4f455',
         description: 'Lorimer St',
       };
     case 2:
       return {
-        color: '#f7d496',
         description: 'Sutter Ave',
       };
     case 3:
       return {
-        color: '#FF9900',
         description: '1st Ave',
       };
     case 4:
       return {
-        color: '#f7cabf',
         description: 'Grand St',
       };
     case 5:
       return {
-        color: '#ea6661',
         description: 'Graham Ave',
       };
     case 6:
       return {
-        color: '#d36ff4',
         description: 'Bedford Ave',
       };
     case 7:
       return {
-        color: '#dac0e8',
         description: 'Montrose Ave',
       };
     case 8:
       return {
-        color: '#5CA2D1',
         description: 'Atlantic Ave',
       };
     case 9:
       return {
-        color: '#8ece7c',
         description: 'Halsey St',
       };
     case 10:
       return {
-        color: '#bab8b6',
         description: 'Myrtle - Wyckoff Aves',
       };
     case 11:
       return {
-        color: '#5f5f60',
         description: 'Livonia Ave',
       };
     case 12:
       return {
-        color: '#5f5f60',
         description: 'Canarsie - Rockaway Pkwy',
       };
     case 13:
       return {
-        color: '#f4f455',
         description: 'E 105th St',
       };
     case 14:
       return {
-        color: '#f7d496',
         description: 'New Lots Ave',
       };
     case 15:
       return {
-        color: '#FF9900',
         description: 'DeKalb Ave',
       };
     case 16:
       return {
-        color: '#f7cabf',
         description: 'Bushwick - Aberdeen',
       };
     case 17:
       return {
-        color: '#ea6661',
         description: 'Broadway Junction',
       };
     case 18:
       return {
-        color: '#d36ff4',
         description: 'Jefferson St',
       };
     case 19:
       return {
-        color: '#dac0e8',
         description: 'Transportation & Utility',
       };
     case 18:
       return {
-        color: '#5CA2D1',
         description: 'Morgan Ave',
       };
     case 19:
       return {
-        color: '#8ece7c',
         description: '3rd Ave',
       };
     case 20:
       return {
-        color: '#bab8b6',
         description: 'Union Sq - 14th St',
       };
     case 21:
       return {
-        color: '#5f5f60',
         description: '6th Ave',
       };
     case 22:
       return {
-        color: '#5f5f60',
         description: '8th Ave',
       };
 
     default:
       return {
-        color: '#5f5f60',
         description: 'Other',
       };
   }
@@ -155,12 +130,9 @@ for (var i=1; i<23; i++) {
   // lookup the landuse info for the current iteration
   const stationInfo = StationLookup(i);
 
-  // this is a simple jQuery template, it will append a div to the legend with the color and description
+  // this is a simple jQuery template, it will append a div to the legend with the description
   $('.legend').append(`
-    <div>
-      <div class="legend-color-box" style="background-color:${stationInfo.color};"></div>
-      ${stationInfo.description}
-    </div>
+      <div class="sidebar" style="background-color:${stationInfo.description};"></div>
   `)
 }
 
@@ -288,7 +260,7 @@ map.on('style.load', function() {
   map.on('mousemove', function (e) {
          // query for the features under the mouse, but only in the station layer
          var features = map.queryRenderedFeatures(e.point, {
-             layers: ['l_train_stops'],
+             layers: ['L-stops-circle'],
          });
 
          // get the first feature from the array of returned features.

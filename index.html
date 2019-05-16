@@ -8,22 +8,53 @@
       <meta name="author" content="Zee">
 
       <title> L train Slowdown</title>
-
+<!-- Mapbox CSS -->
       <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css" rel="stylesheet" />
+<!-- Bootstrap core CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- Custom CSS -->
       <link rel="stylesheet" href="css/styles.css?v=1.0">
 
   </head>
-  <title> Sidebar Menu</title>
   <body>
      <div id="mapContainer"></div>
       <div id="sidebar">
        <div class="info-box">
           <h2>Nightlife Crisis</h2>
-          <span id="address">click on the station to show more info</span><br/>
-          <span id="landuse"></span>
+          <span id="address"><p>Hover over the station to show the station name</p</span><br/>
+          <span id="name"></span>
         </div>
-          </div>
+
+<!-- Information Box about Peak Hours and L train slowdown -->
+        <div class="info-box">
+          <h3>Info About Peak Hours and Train Slowdown</h3>
+          <h3>Bars Peak Hours</h3>
+          Weekdays: 9:00 pm - 12:00 am
+          <p>Weekends: 10:00 pm - 4:00 am</p>
+
+          <h3>Resturants Peak Hours</h3>
+          Weekdays: 9:00 pm - 11:00 pm
+          <p>Weekends: 9:00 pm - 1:00 am</p>
+
+          <h3>L Train Slowdown</h3>
+          Weekdays: 10:00 pm - 5:00 am
+          <br>Weekends: All Day<br>
+
+        </div>
+
+<!-- Key Map Box -->
+          <div class=legend >
+            <h3> Key Map</h3>
+
+          <div><span style='background-color: White'></span>Subway Lines</div>
+          <div><span style='background-color: #41ae76'></span>L Train Line</div>
+          <div><span style='background-color: blue'></span>Restaurants</div>
+          <div><span style='background-color: red'></span>Bars</div>
+          <div><span style='background-color: yellow'></span>Subway Station</div>
+          <div><span style='background-color: #85837f'></span>0.25 mile Walking Distance from Subway Station</div>
+        </div>
+        </div>
+
 
 <!-- MODAL -->
 <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -53,7 +84,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <!-- LOAD BOOTSTRAP -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
       <!-- LOAD JS SCRPIT -->
       <script src="js/scripts.js"></script>
 
