@@ -17,6 +17,28 @@ $(document).ready(function(){
     $("#myModal").modal('show');
 });
 
+// a helper function for looking up colors and descriptions for NYC land use codes
+var StationLookup = (code) => {
+  switch (code) {
+    case 1:
+      return {
+        color: '#b22055',
+        // name: '1 & 2 Family',
+      };
+// use jquery to programmatically create a Legend
+// for numbers 1 - 11, get the land use color and description
+for (var i=1; i<2; i++) {
+  // lookup the landuse info for the current iteration
+  const stationInfo = StationLookup(i);
+
+  // this is a simple jQuery template, it will append a div to the legend with the color and description
+  $('.legend').append(`
+    <div>
+      ${stationInfo.description}
+    </div>
+  `)
+}
+
 // we can't add our own sources and layers until the base style is finished loading
 map.on('style.load', function() {
   map.addSource('bars',{
@@ -157,4 +179,60 @@ map.on('style.load', function() {
        })
 
 
-})
+       // add an empty data source, which we will use to highlight the station the user is hovering over
+        map.addSource('highlight-feature', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: []
+          }
+        })
+
+        // add a layer for the highlighted station
+        map.addLayer({
+          id: 'highlight-line',
+          type: 'line',
+          source: 'highlight-feature',
+          paint: {
+            'line-width': 3,
+            'line-opacity': 0.9,
+            'line-color': 'black',
+          }
+        });
+
+
+       // when the mouse moves, do stuff!
+       map.on('mousemove', function (e) {
+         // query for the features under the mouse, but only in the station layer
+         var features = map.queryRenderedFeatures(e.point, {
+             layers: ['l_train_stops'],
+         });
+
+         // get the first feature from the array of returned features.
+         var station = features[0]
+
+
+         if (station) {  // if there's a a station under the mouse, do stuff
+           map.getCanvas().style.cursor = 'pointer';
+       // make the cursor a pointer
+
+           // lookup the corresponding description for the land use code
+           var stationDescription = StationLookup(parseInt(station.properties.name)).description;
+
+           // use jquery to display the address and land use description to the sidebar
+           $('#name').text(l_station.properties.name);
+
+
+           // set this lot's polygon feature as the data for the highlight source
+           map.getSource('highlight-feature').setData(station.geometry);
+         } else {
+           map.getCanvas().style.cursor = 'default'; // make the cursor default
+
+           // reset the highlight source to an empty featurecollection
+           map.getSource('highlight-feature').setData({
+             type: 'FeatureCollection',
+             features: []
+           });
+         }
+       })
+      })
