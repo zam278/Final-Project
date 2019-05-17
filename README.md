@@ -1,7 +1,7 @@
 <h1>Nightlife Crises</h1>
 https://zam278.github.io/Final-Project/
 
-The map shows the density of 279 bar and 1147 restaurant that are located within 0.25 miles radius away from the L train stops. These bars and restaurants will be affected by the L train slowdown during weekends and weekdays. 
+<h3>The map shows the density of 279 bar and 1147 restaurant that are located within 0.25 miles radius away from the L train stops. These bars and restaurants will be affected by the L train slowdown during weekends and weekdays.</h3> 
 
 Interactivity
 
