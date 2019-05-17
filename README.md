@@ -8,7 +8,7 @@ Interactivity
 When the map loads, a modal popup that briefly explains what the map is about.   
 The map features a toggle menu where the buttons of layers are displayed.
 The menu can be clicked to turn on/off the layer.
-The user can hover over the subway stations to display its name on the first box of the sidebar.
+
 
 Information Display
 
@@ -23,3 +23,4 @@ Bars (along the L train stations)
 Subway stations
 0.25 buffer, walking distance from the station
 
+<br>*By hovering over any of the subway stations the name of the station will display on the first box of the sidebar.</br>
