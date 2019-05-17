@@ -10,7 +10,7 @@ https://zam278.github.io/Final-Project/
 <p>•	The menu can be clicked to turn on/off the layer.</p>
 
 
-Information Display
+<h2>Information Display</h2>
 
 The second box shows some information about the peak hours of the bars and restaurants along the L train during the weekend and weekdays and the time for the L train slowdown during the same period.
 
