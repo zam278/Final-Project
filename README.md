@@ -16,9 +16,9 @@ The second box shows some information about the peak hours of the bars and resta
 
 Below the information box there's the legend for the map:
 
-<p>•	Subway lines (All the white lines)
-•	L train line 
-•	Restaurants (along the L train stations)  
+<p>•	Subway lines (All the white lines)</p>
+<p>•	L train line</p> 
+<p>•	Restaurants (along the L train stations)</p>  
 •	Bars (along the L train stations) 
 •	Subway stations
 •	0.25 buffer, walking distance from the station
