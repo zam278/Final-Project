@@ -16,8 +16,8 @@ The second box shows some information about the peak hours of the bars and resta
 
 Below the information box there's the legend for the map:
 
-Subway lines (All the white lines)
-L train line 
+<p>Subway lines (All the white lines)</p>
+<p>L train line</p> 
 Restaurants (along the L train stations)  
 Bars (along the L train stations) 
 Subway stations
