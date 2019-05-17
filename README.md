@@ -16,11 +16,12 @@ The second box shows some information about the peak hours of the bars and resta
 
 Below the information box there's the legend for the map:
 
-<p>Subway lines (All the white lines)</p>
-<p>L train line</p> 
-Restaurants (along the L train stations)  
-Bars (along the L train stations) 
-Subway stations
-0.25 buffer, walking distance from the station
+<p>•	Subway lines (All the white lines)
+•	L train line 
+•	Restaurants (along the L train stations)  
+•	Bars (along the L train stations) 
+•	Subway stations
+•	0.25 buffer, walking distance from the station
+</p>
 
 <br>*By hovering over any of the subway stations the name of the station will display on the first box of the sidebar.</br>
