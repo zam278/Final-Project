@@ -121,16 +121,17 @@ var StationLookup = (code) => {
       return {
         description: 'Other',
       };
-  }
+   }
 };
 
-// use jquery to programmatically create a Legend
-// for numbers 1 - 11, get the land use color and description
+
+// for numbers 1 - 11, get the station description
 for (var i=1; i<23; i++) {
-  // lookup the landuse info for the current iteration
+// lookup the station info for the current iteration
   const stationInfo = StationLookup(i);
 
-  // this is a simple jQuery template, it will append a div to the legend with the description
+
+// this is a simple jQuery template, it will append a div to the legend with the description
   $('.legend').append(`
       <div class="sidebar" style="background-color:${stationInfo.description};"></div>
   `)
@@ -142,72 +143,73 @@ map.on('style.load', function() {
   map.addSource('bars',{
     type: 'geojson',
     data: 'data/bars.geojson',
-  });
+     });
 
   map.addLayer({
-     id: 'bars-circle',
+     id: 'Bars',
      type: 'circle',
      source: 'bars',
      'layout': {
         'visibility': 'visible',
-   },
+     },
      paint: {
        'circle-radius': 5,
        'circle-color': 'red',
-   }
- });
+      }
+     });
 
 
    map.addSource('rest_along_L',{
      type: 'geojson',
      data: 'data/rest_along_L.geojson',
-   });
+     });
 
    map.addLayer({
-      id: 'restaurant-circle',
+      id: 'Resturants',
       type: 'circle',
       source: 'rest_along_L',
       'layout': {
          'visibility': 'visible',
-    },
+      },
       paint: {
         'circle-radius': 8,
         'circle-color': 'blue',
         'circle-opacity': 0.6,
-    }
-  });
+      }
+     });
 
 
    map.addSource('subway_lines',{
      type: 'geojson',
      data: 'data/subway_lines.geojson',
-   });
+     });
 
    map.addLayer({
-      id: 'subway_lines-L',
+      id: 'L Train Line',
       type: 'line',
       source: 'subway_lines',
       'layout': {
          'visibility': 'visible',
-    },
+      },
       paint: {
         'line-color': '#41ae76',
         },
-// to filter the layer and include only L line
+  // to filter the layer and include only L line
       filter: ["==","name","L"]
-    });
+     });
+
 
     map.addLayer({
-       id: 'subway_lines-line',
+       id: 'All Subway Lines',
        type: 'line',
        source: 'subway_lines',
        'layout': {
           'visibility': 'visible',
-     },
+       },
        paint: {
          'line-color': 'white',
         },
-// to include all subway lines
+    // to include all subway lines
        filter: ["!=","name","L"]
      });
 
@@ -224,8 +226,9 @@ map.on('style.load', function() {
         paint: {
           'fill-color': '#fff',
           'fill-opacity': 0.1,
-      }
-    });
+        }
+     });
+
 
       map.addSource('l_train_stops',{
         type: 'geojson',
@@ -233,7 +236,7 @@ map.on('style.load', function() {
       });
 
       map.addLayer({
-         id: 'L-stops-circle',
+         id: 'Subway Stations',
          type: 'circle',
          source: 'l_train_stops',
          'layout': {
@@ -243,31 +246,10 @@ map.on('style.load', function() {
            'circle-radius': 8,
            'circle-color': 'yellow',
          },
-  })
+      })
 
-
-       // add an empty data source, which we will use to highlight the station the user is hovering over
-        map.addSource('highlight-feature', {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: []
-          }
-        })
-
-        // add a layer for the highlighted station
-        map.addLayer({
-          id: 'highlight-line',
-          type: 'line',
-          source: 'highlight-feature',
-          paint: {
-            'line-width': 3,
-            'line-opacity': 0.9,
-            'line-color': 'black',
-             },
-        });
-
-var toggleableLayerIds = [ 'bars-circle', 'restaurant-circle', 'subway_lines-line', 'L-stops-circle'];
+//  create a toggle menu
+var toggleableLayerIds = [ 'Bars', 'Resturants', 'All Subway Lines', 'Subway Stations'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
    var id = toggleableLayerIds[i];
@@ -298,39 +280,31 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
         }
 
 
- // when the mouse moves, do stuff!
+// when the mouse moves, do stuff!
   map.on('mousemove', function (e) {
-         // query for the features under the mouse, but only in the station layer
+// query for the features under the mouse, but only in the station layer
          var features = map.queryRenderedFeatures(e.point, {
-             layers: ['L-stops-circle'],
+             layers: ['Subway Stations'],
          });
 
-         // get the first feature from the array of returned features.
+// get the first feature from the array of returned features.
          var station = features[0]
-
-
          if (station) {  // if there's a a station under the mouse, do stuff
            map.getCanvas().style.cursor = 'pointer';
-       // make the cursor a pointer
+           // make the cursor a pointer
 
-           // lookup the corresponding description for the land use code
+// lookup the corresponding description for the station
            var stationDescription = StationLookup(parseInt(station.properties.name)).description;
 
-           // use jquery to display the station description to the sidebar
+// use jquery to display the station description to the sidebar
            $('#name').text(station.properties.name);
 
 
-           // set this lot's polygon feature as the data for the highlight source
+// set this lot's polygon feature as the data for the highlight source
            map.getSource('highlight-feature').setData(station.geometry);
          } else {
            map.getCanvas().style.cursor = 'default'; // make the cursor default
 
-           // reset the highlight source to an empty featurecollection
-           map.getSource('highlight-feature').setData({
-             type: 'FeatureCollection',
-             features: []
-           });
-         }
+          }
        })
-
-      })
+    })

@@ -75,7 +75,7 @@ background: #fff;
 position: absolute;
 z-index: 1;
 top: 10px;
-right: 10px;
+right: 40px;
 border-radius: 3px;
 width: 100px;
 border: 1px solid rgba(0,0,0,0.4);
@@ -109,5 +109,5 @@ color: #ffffff;
 }
 
 #menu a.active:hover {
-background: #525252;
+background: #404040;
 }
