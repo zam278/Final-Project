@@ -14,7 +14,7 @@ https://zam278.github.io/Final-Project/
 
 The second box shows some information about the peak hours of the bars and restaurants along the L train during the weekend and weekdays and the time for the L train slowdown during the same period.
 
-Below the information box there's the legend for the map:
+<h4>Below the information box there's the legend for the map:</h4>
 
 <p>•	Subway lines (All the white lines)</p>
 <p>•	L train line</p> 
