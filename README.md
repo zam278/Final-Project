@@ -24,3 +24,4 @@ The second box shows some information about the peak hours of the bars and resta
 <p>•	0.25 buffer, walking distance from the station</p>
 
 <br>By hovering over any of the subway stations the name of the station will display on the first box of the sidebar.</br>
+
