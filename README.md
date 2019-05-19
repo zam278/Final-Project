@@ -25,3 +25,6 @@ The second box shows some information about the peak hours of the bars and resta
 
 <br>By hovering over any of the subway stations the name of the station will display on the first box of the sidebar.</br>
 
+<h4>Accredited data, All rights goes to:</h4><P>• Restaurant: https://www.menglugao.com/blog/2017/12/7/new-york-city-restaurants-data-visualization. Dataset for the
+NYC restaurant location was taken from this study. The data was analyzed further by us in ArcGIS specifically for the L train.</p><P>• Bars:https://www.kaggle.com/somesnm/heatmap-of-pubs-and-bars-of-new-york-city. Dataset for the NYC bar location was
+taken from this study. The data was analyzed further by us in ArcGIS specically for the L train.</p><p>• Subway lines and subway stations: NYC OpenData</p>
